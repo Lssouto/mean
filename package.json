@@ -20,6 +20,6 @@
     "angular": "^1.6.6",
     "bootstrap": "^3.3.7",
     "express": "^4.16.1",
-    "npm-sass": "^2.2.1"
+    "mongodb": "^2.2.31",
   }
 }
