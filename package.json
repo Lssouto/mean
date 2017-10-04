@@ -17,9 +17,8 @@
   },
   "homepage": "https://github.com/Lssouto/mean#readme",
   "dependencies": {
-    "angular": "^1.6.6",
-    "bootstrap": "^3.3.7",
-    "express": "^4.16.1",
-    "mongodb": "^2.2.31",
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "jquery": "^3.2.1"
   }
 }

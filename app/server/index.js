@@ -7,7 +7,7 @@ app.use('/api', router);
 app.use(express.static(path.join(__dirname, '../public' )));
 
 
-app.listen(process.env.PORT || 3412)
+app.listen(process.env.PORT || 3412);
 
 
 
