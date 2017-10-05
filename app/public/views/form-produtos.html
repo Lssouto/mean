@@ -1,0 +1,63 @@
+<div class="jumbotron container" ng-controller="loja-papelaria-ctrl">
+
+		<h2>{{titulo}}</h2>
+		
+		<input type="text" class="form-control" placeholder="Procure aqui" />
+		<br/><br/>	
+
+		<div ui-alert></div>
+
+		<table class="table table-striped">
+
+			<tr>
+				<th></th>
+				<th><a href="">Nome</a></th>
+				<th><a href="">Tipo</a></th>
+				<th><a href="">Descrição</a></th>
+				<th><a href="">Preço</a></th>
+				<th><a href="">Quantidade</a></th>
+				
+			</tr>
+			
+			<!--Proximas Linhas-->
+			<tr>
+				<td> <input type="checkbox" />	</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+		</table>
+
+		<hr/>
+		
+		<form id="enviarProduto" class="row">
+			<div class="container col-sm-offset-2 col-sm-8">
+				<input class="form-control" type="text" name="nome" placeholder="Nome" ng-model="produto.nome"/>
+		
+				<select class="form-control" ng-model="produto.tipo">
+				<option value="">Selecione o tipo</option>
+				<option value="0">Escolar</option>
+				<option value="1">Escritório</option>
+				<option value="2">Eletrônico</option>
+				<option value="3">Diversos</option>
+				
+				</select>
+				
+				<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.desc"/>
+			
+				<input class="form-control" type="number" name="preco" placeholder="Preço" ng-model="produto.preco" />
+				
+				<input class="form-control" type="number" name="quantidade" placeholder="Quantidade" ng-model="produto.qtd"/>
+				
+				<button class="btn btn-danger left" >Apagar Produto</button>
+				
+				<button class="btn btn-primary right" ng-click="adicionarProduto(produto)"> Adicionar Produto</button>
+		
+			</div>
+		</form>
+		
+	</div>
