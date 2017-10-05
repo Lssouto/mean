@@ -1,0 +1,14 @@
+$icon-font-path: '../fonts/';
+// bower:scss
+@import "app/public/libs/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+//Paginas
+
+@import "principal";
+
+//Estilo Global
+
+body{
+  color: red;
+}
