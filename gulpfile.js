@@ -81,6 +81,8 @@ gulp.task('serve', () => {
 
     gulp.watch([
       'app/public/*.html',
+      'app/public/views/*.html',
+      //'app/public/scripts/**/*',
       'app/public/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);

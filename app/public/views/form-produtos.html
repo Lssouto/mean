@@ -20,40 +20,39 @@
 			</tr>
 			
 			<!--Proximas Linhas-->
-			<tr>
-				<td> <input type="checkbox" />	</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="produto in produtos">
+				<td> <input type="checkbox"  ng-model="produto.selecionado"/>	</td>
+				<td>{{produto.nome}}</td>
+				<td>{{produto.tipo}}</td>
+				<td>{{produto.descricao}}</td>
+				<td>{{produto.preco}}</td>
+				<td>{{produto.qtd}}</td>
 			</tr>
 
 		</table>
 
 		<hr/>
 		
-		<form id="enviarProduto" class="row">
+		<form id="enviarProduto" name="enviarProduto" class="row">
 			<div class="container col-sm-offset-2 col-sm-8">
 				<input class="form-control" type="text" name="nome" placeholder="Nome" ng-model="produto.nome"/>
 		
 				<select class="form-control" ng-model="produto.tipo">
 				<option value="">Selecione o tipo</option>
-				<option value="0">Escolar</option>
-				<option value="1">Escritório</option>
-				<option value="2">Eletrônico</option>
-				<option value="3">Diversos</option>
+				<option value="escolar">Escolar</option>
+				<option value="escritorio">Escritório</option>
+				<option value="eletronico">Eletrônico</option>
+				<option value="diversos">Diversos</option>
 				
 				</select>
 				
-				<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.desc"/>
+				<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.descricao"/>
 			
 				<input class="form-control" type="number" name="preco" placeholder="Preço" ng-model="produto.preco" />
 				
 				<input class="form-control" type="number" name="quantidade" placeholder="Quantidade" ng-model="produto.qtd"/>
 				
-				<button class="btn btn-danger left" >Apagar Produto</button>
+				<button class="btn btn-danger left" ng-click="delProduto(produtos)">Apagar Produto</button>
 				
 				<button class="btn btn-primary right" ng-click="adicionarProduto(produto)"> Adicionar Produto</button>
 		
