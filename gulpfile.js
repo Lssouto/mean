@@ -70,7 +70,7 @@ gulp.task('serve', () => {
   runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'],  () => {
     browserSync.init({
       notify: false,
-      port: process.env.PORT || 3412,
+      port: process.env.PORT || 3413,
       server: {
         baseDir: ['.tmp', 'app/public'],
         routes: {
@@ -95,7 +95,7 @@ gulp.task('serve', () => {
 gulp.task('serve:dist', ['default'], () => {
   browserSync.init({
     notify: false,
-    port: process.env.PORT || 3412,
+    port: process.env.PORT || 3413,
     server: {
       baseDir: ['dist']
     }
@@ -105,7 +105,7 @@ gulp.task('serve:dist', ['default'], () => {
 gulp.task('serve:test', ['scripts'], () => {
   browserSync.init({
     notify: false,
-    port: process.env.PORT || 3412,
+    port: process.env.PORT || 3413,
     ui: false,
     server: {
       baseDir: 'test',

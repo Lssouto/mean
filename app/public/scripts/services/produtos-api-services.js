@@ -1,9 +1,9 @@
 angular.module("loja-papelaria").factory("produtosApi",($http)=>{
-	let _getProdutos = function(){
-		return $http.get("localhost:3412/produtosApi");
+	let _getProdutos = ()=>{
+		return $http.get("http://localhost:3412/api/produtos");
 	};
-	let _postProdutos = function(produto){
-		return $http.post("localhost:3412/produtosApi", produto)
+	let _postProdutos = (produto) =>{
+		return $http.post("http://localhost:3412/api/produtos", produto)
 	};
 	return{
 		getProdutos: _getProdutos,
