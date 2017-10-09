@@ -7,6 +7,7 @@ let _getConnection = (callback)=>{
 		callback(db);
 	});
 };
+
 let _criarDocumento = (nome,callback)=>{
 	_getConnection((db)=>{
 	   db.createCollection(nome, (err,res)=>{
@@ -57,10 +58,21 @@ let _getDadosDocumento = (nome,callback)=>{
 	});
 };
 
+let _dropDatabase = (callback) =>{
+	_getConnection((db)=>{
+		db.dropDatabase((err,result)=>{
+			if(err) throw err;
+			callback(result);
+			db.close();
+		});
+	});
+};
+
 module.exports = {
 	criarDocumento : _criarDocumento,
 	getListaDocumento : _getListaDocumento,
 	insertDadosDocumento : _insertDadosDocumento,
 	delDadosDocumento  : _delDadosDocumento,
-	getDadosDocumento : _getDadosDocumento
+	getDadosDocumento : _getDadosDocumento,
+	dropDatabase : _dropDatabase
 }

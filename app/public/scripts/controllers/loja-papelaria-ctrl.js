@@ -13,6 +13,10 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 				delete $scope.produto;
 				console.log(valor);
 				$scope.enviarProduto.$setPristine();
+			},(valor,status)=>{
+
+				console.log("Ocoreu um erro na inserção")
+
 			});
 	};
 
@@ -34,7 +38,7 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 
 		},(valor,status)=>{
 
-			console.log("Ocorreu um error");
+			console.log("Ocorreu um error na remoção");
 
 		});
 		//Atribui ao array contatos tudo aquilo que não estiver selecionado

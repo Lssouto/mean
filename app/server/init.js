@@ -8,10 +8,23 @@ let _initial = ()=>{
 					];
 
 	mongodb.insertDadosDocumento("produtos",json,(callback)=>{
-		console.log(callback);
+		//console.log(callback);
 	});
 
+	return "Base de dados Criada!";
 
 };
 
-module.exports = {initial : _initial};
+let _end = ()=>{
+
+	mongodb.dropDatabase((callback)=>{
+		console.log(callback);
+	});
+
+	return "Base de dados Deletada!";
+};
+
+module.exports = {
+	initial : _initial,
+	end:_end
+};

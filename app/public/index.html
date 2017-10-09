@@ -13,6 +13,7 @@
 <body>
 	
 	<div ng-include="'views/form-produtos.html'"></div>
+	<div ng-include="'views/admin.html'"></div>
 	
 	<!--Jquery-->
 	<script type="text/javascript" src="libs/jquery/dist/jquery.js"></script> 
@@ -37,10 +38,21 @@
 	<!--Angular Js-->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/configUrl.js"></script>
+
+		<!-- General -->
+		<script src="scripts/services/baseUrl-service.js"></script>
+
+		<!-- Form-Produtos -->
 		<!-- Controllers -->
 		<script src="scripts/controllers/loja-papelaria-ctrl.js"></script>
 		<!-- Services -->
 		<script src="scripts/services/produtos-api-services.js"></script>
+
+		<!-- Admin -->
+		<!-- Controller -->
+		<script src="scripts/controllers/admin-ctrl.js"></script>
+		<!-- Services -->
+		<script src="scripts/services/admin-services.js"></script>
 	<!--endAngular-->
 	
 	<!--Main-->

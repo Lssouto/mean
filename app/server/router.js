@@ -43,8 +43,11 @@ router.post('/delProdutos', (req, res) => {
 });
 
 router.get('/init',(req,res)=>{
-  init.initial();
-	res.end();
+	res.end(init.initial());
+});
+
+router.get('/drop-db',(req,res)=>{
+  res.end(init.end());
 });
 
 router.options('/produtos', (req, res) => {
