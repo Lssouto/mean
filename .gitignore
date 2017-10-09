@@ -3,3 +3,4 @@ app/public/libs/
 .tmp
 npm-debug.log
 data/
+mongod

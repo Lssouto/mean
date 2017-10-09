@@ -1,16 +1,17 @@
 {
-  "name": "mean-tcc",
+  "name": "mean",
   "version": "1.0.0",
-  "description": "tcc desenvolvido em mean",
+  "description": "aplicacao em Mean",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./app/server && node index.js"
+    "start": "cd ./app/server && node index.js",
+    "installAll" : "npm install && bower install"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lssouto/mean.git"
   },
-  "author": "Lssouto,Bruna,Regiane",
+  "author": "Lssouto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Lssouto/mean/issues"
@@ -23,6 +24,7 @@
     "mongoose": "^4.12.0"
   },
   "devDependencies": {
+    "bower": "^1.8.2",
     "browser-sync": "^2.2.1",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
