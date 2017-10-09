@@ -1,8 +1,12 @@
 let router = require('express')();
 let body_parser = require('body-parser');
-let mongodb = require('./mongodb');
 
-let init = require('./init');//remover depois
+// Mongo
+let mongodb = require('./mongodb');
+let ObjectId = require('mongodb').ObjectID;
+
+//Remover depois
+let init = require('./init');
 
 router.use(body_parser.urlencoded({ extended: false }));
 router.use(body_parser.json());
@@ -39,7 +43,7 @@ router.post('/delProdutos', (req, res) => {
 });
 
 router.get('/init',(req,res)=>{
-	init.initial();
+  init.initial();
 	res.end();
 });
 

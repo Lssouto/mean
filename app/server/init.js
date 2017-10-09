@@ -8,7 +8,7 @@ let _initial = ()=>{
 					];
 
 	mongodb.insertDadosDocumento("produtos",json,(callback)=>{
-		// console.log(callback);
+		console.log(callback);
 	});
 
 

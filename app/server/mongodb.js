@@ -1,6 +1,6 @@
 let MongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/dbloja";
-let ObjectId = require('mongodb').ObjectID;
+let url = "mongodb://"+(process.env.IP || "localhost")+"/dbloja";
+
 
 let _getConnection = (callback)=>{
 	MongoClient.connect(url,(err,db)=>{

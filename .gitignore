@@ -2,3 +2,4 @@ node_modules/
 app/public/libs/
 .tmp
 npm-debug.log
+data/
