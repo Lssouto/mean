@@ -27,10 +27,7 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
   return gulp.src('app/public/scripts/**/*.js')
     .pipe($.plumber())
-    .pipe($.if(dev, $.sourcemaps.init()))
     .pipe($.babel())
-    .pipe($.if(dev, $.sourcemaps.write('.')))
-    .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
 });
 
@@ -67,7 +64,7 @@ gulp.task('fonts', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'],  () => {
+  runSequence(['clean'], ['styles', 'scripts', 'fonts'],  () => {
     browserSync.init({
       notify: false,
       port: process.env.PORT || 3413,
@@ -82,15 +79,14 @@ gulp.task('serve', () => {
     gulp.watch([
       'app/public/*.html',
       'app/public/views/*.html',
-      //'app/public/scripts/**/*',
       'app/public/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);
 
     gulp.watch('app/public/scss/**/*.scss', ['styles']);
     gulp.watch('app/public/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/public/fonts/**/*', ['fonts']);
-    gulp.watch('bower.json', ['wiredep', 'fonts']);
+    //gulp.watch('app/public/fonts/**/*', ['fonts']);
+    //gulp.watch('bower.json', ['wiredep', 'fonts']);
   });
 });
 
@@ -123,12 +119,12 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('app/public/styles/*.scss')
+  gulp.src('app/public/scss/*.scss')
     .pipe($.filter(file => file.stat && file.stat.size))
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest('app/public/styles'));
+    .pipe(gulp.dest('app/public/css'));
 
   gulp.src('app/public/*.html')
     .pipe(wiredep({

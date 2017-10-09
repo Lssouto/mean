@@ -1,6 +1,6 @@
 app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 	
-	$scope.titulo = "Bem vindo a papelaria";
+	$scope.titulo = "Seja bem vindo a papelaria";
 
 	$scope.produtos = [];
 
