@@ -5,18 +5,19 @@
 		<input type="text" class="form-control" placeholder="Procure aqui" />
 		<br/><br/>	
 
-		<table class="table table-striped">
-
+		<table class="table table-striped table-responsive">
+		<thead>
 			<tr>
-				<th><a href="">Nome</a></th>
-				<th><a href="">Tipo</a></th>
-				<th><a href="">Descrição</a></th>
-				<th><a href="">Preço</a></th>
-				<th><a href="">Quantidade</a></th>
-				<th></th>
-				<th></th>
+				<th class="col-sm-2"><a href="">Nome</a></th>
+				<th class="col-sm-2"><a href="">Tipo</a></th>
+				<th class="col-sm-2"><a href="">Descrição</a></th>
+				<th class="col-sm-2"><a href="">Preço</a></th>
+				<th class="col-sm-2"><a href="">Quantidade</a></th>
+				<th class="col-sm-1"></th>
+				<th class="col-sm-1"></th>
 			</tr>
-			
+		</thead>
+		<tbody>
 			<!--Proximas Linhas-->
 			<tr ng-repeat="produto in produtos">
 				<td>{{produto.nome}}</td>
@@ -24,37 +25,43 @@
 				<td>{{produto.descricao}}</td>
 				<td>{{produto.preco}}</td>
 				<td>{{produto.qtd}}</td>
-				<td><button class="btn btn-warning small reset" ng-click="updateProduto(produto)">Update</button></td>
+				<td><button class="btn btn-warning small reset" ng-click="setFormProduto(produto);">Update</button></td>
 				<td><button class="btn btn-danger small reset" ng-model="produto.selecionado" ng-click="delProdutoT(produto)">Apagar</button></td>
 			</tr>	
+			<tr>
+				<td>
+					<form id="addProduto" name="addProduto">
+					<input class="form-control" type="text" name="nome" placeholder="Nome" ng-model="produto.nome" />	
+				</td>
+				<td>
+					<select class="form-control" ng-model="produto.tipo" >
+					<option value="">Tipo</option>
+					<option value="escolar">Escolar</option>
+					<option value="escritorio">Escritório</option>
+					<option value="eletronico">Eletrônico</option>
+					<option value="diversos">Diversos</option>
+					
+					</select>
+				</td>
+				<td>
+					<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.descricao" />
+				</td>
+				<td>
+					<input class="form-control" type="number" name="preco" placeholder="Preço" ng-model="produto.preco" />
+				</td>
+				<td>
+					<input class="form-control" type="number" name="qtd" placeholder="Quantidade" ng-model="produto.qtd" />
+				</td>
+				<td>
+					<button class="btn btn-success small reset" ng-click="produto = {};formState = true;">Limpar</button>
+				</td>
+				<td>
+					<button class="btn btn-primary small reset" ng-click="adicionarProduto(produto)" ng-init="formState = true" ng-show="formState"> Adicionar</button>
+					<button class="btn btn-primary small reset" ng-click="atualizarProduto(produto)" ng-show="!formState"> Update</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>	
 		</table>
-
-		<hr/>
-		
-		<form id="enviarProduto" name="enviarProduto" class="row">
-			<div class="container col-sm-offset-2 col-sm-8">
-				<input class="form-control" type="text" name="nome" placeholder="Nome" ng-model="produto.nome" ng-value="(formValue.nome || '')"/>
-		
-				<select class="form-control" ng-model="produto.tipo" ng-value="(formValue.tipo || '')">
-				<option value="">Selecione o tipo</option>
-				<option value="escolar">Escolar</option>
-				<option value="escritorio">Escritório</option>
-				<option value="eletronico">Eletrônico</option>
-				<option value="diversos">Diversos</option>
 				
-				</select>
-				
-				<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.descricao" ng-value="(formValue.descricao || '')"/>
-			
-				<input class="form-control" type="number" name="preco" placeholder="Preço" ng-model="produto.preco" ng-value="(formValue.preco || '')" />
-				
-				<input class="form-control" type="number" name="qtd" placeholder="Quantidade" ng-model="produto.qtd" ng-value="(formValue.qtd || '')"/>
-				
-				<button class="btn btn-success btn-radius left" ng-click="produto = {}">Limpar Formulário</button>
-				
-				<button class="btn btn-primary btn-radius right" ng-click="adicionarProduto(produto)"> Adicionar Produto</button>
-		
-			</div>
-		</form>
-		
 	</div>

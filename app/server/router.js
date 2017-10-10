@@ -48,6 +48,14 @@ router.post('/delProduto', (req, res) => {
 	});
 });
 
+router.post('/updateProduto',(req,res)=>{
+  let id = req.body._id
+  delete req.body['_id'];
+  mongodb.updateDadosDocumento("produtos",{ _id: ObjectId(id) },req.body,(callback)=>{
+    res.send(callback);
+  });
+});
+
 router.get('/init',(req,res)=>{
 	res.end(init.initial());
 });

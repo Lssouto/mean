@@ -1,7 +1,3 @@
-.form-control{
-    margin-top:15px;
-    margin-bottom:15px;
-}
 .btn {
     margin-top:30px;
     margin-bottom:30px;
@@ -10,7 +6,6 @@
     font-weight:bolder;
     
     &.reset{
-        padding:0px;
         margin-top:0px;
         margin-bottom:0px;
     }
@@ -21,16 +16,10 @@
     &.btn-radius{
         border-radius:30px;
     }
-    &.btn-danger:hover{
-        background-color: $white;
-        border: #c9302c 1px solid;
-        color: #c9302c;
-    }
-    &.btn-primary:hover{
-        background-color: $white;
-        border: #286090 1px solid;
-        color: #286090;
-    }
+    /*&.btn-danger:hover{
+        background-color: darken(#d9534f, 20%);  
+    }*/
+    
 }
 .left{
     float:left;

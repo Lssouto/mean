@@ -8,9 +8,19 @@ let _getConnection = (callback)=>{
 	});
 };
 
-let _criarDocumento = (nome,callback)=>{
+let _dropDatabase = (callback) =>{
 	_getConnection((db)=>{
-	   db.createCollection(nome, (err,res)=>{
+		db.dropDatabase((err,result)=>{
+			if(err) throw err;
+			callback(result);
+			db.close();
+		});
+	});
+};
+
+let _criarDocumento = (collection,callback)=>{
+	_getConnection((db)=>{
+	   db.createCollection(collection, (err,res)=>{
 	  		if(err) throw err;
 	  		callback(res);
 	  		db.close();
@@ -38,6 +48,16 @@ let _insertDadosDocumento = (collection,dado,callback)=>{
 	});
 };
 
+let _getDadosDocumento = (collection,callback)=>{
+	_getConnection((db)=>{
+		db.collection(collection).find({}).toArray((err,results)=>{
+			if (err) throw err;
+			callback(results);
+			db.close();
+		});
+	});
+};
+
 let _delDadosDocumento = (collection,dado,callback)=>{
 	_getConnection((db)=>{
 		db.collection(collection).remove(dado, function(err, res) {
@@ -48,21 +68,11 @@ let _delDadosDocumento = (collection,dado,callback)=>{
 	});
 };
 
-let _getDadosDocumento = (nome,callback)=>{
+let _updateDadosDocumento = (collection,condition,dado,callback)=>{
 	_getConnection((db)=>{
-		db.collection(nome).find({}).toArray((err,results)=>{
+		db.collection(collection).update(condition,dado,(err,results)=>{
 			if (err) throw err;
 			callback(results);
-			db.close();
-		});
-	});
-};
-
-let _dropDatabase = (callback) =>{
-	_getConnection((db)=>{
-		db.dropDatabase((err,result)=>{
-			if(err) throw err;
-			callback(result);
 			db.close();
 		});
 	});
@@ -74,5 +84,6 @@ module.exports = {
 	insertDadosDocumento : _insertDadosDocumento,
 	delDadosDocumento  : _delDadosDocumento,
 	getDadosDocumento : _getDadosDocumento,
-	dropDatabase : _dropDatabase
+	dropDatabase : _dropDatabase,
+	updateDadosDocumento : _updateDadosDocumento
 }
