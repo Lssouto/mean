@@ -20,9 +20,9 @@
 		<tbody>
 			<!--Proximas Linhas-->
 			<tr ng-repeat="produto in produtos">
-				<td>{{produto.nome}}</td>
-				<td>{{produto.tipo}}</td>
-				<td>{{produto.descricao}}</td>
+				<td>{{produto.nome | firstUpper}}</td>
+				<td>{{produto.tipo | firstUpper}}</td>
+				<td>{{produto.descricao | firstUpper}}</td>
 				<td>{{produto.preco}}</td>
 				<td>{{produto.qtd}}</td>
 				<td><button class="btn btn-warning small reset" ng-click="setFormProduto(produto);">Update</button></td>
