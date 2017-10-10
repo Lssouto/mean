@@ -4,3 +4,4 @@ app/public/libs/
 npm-debug.log
 data/
 mongod
+app/public/scripts/configUrl.js
