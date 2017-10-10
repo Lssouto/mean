@@ -3,13 +3,15 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 	$scope.titulo = "Seja bem vindo a papelaria";
 
 	$scope.produtos = [];
-
+	
+	$scope.formValue = {};
+	
 	$scope.adicionarProduto = (produto) =>{
 		console.log(produto);
 
 			produtosApi.postProdutos(produto).then((valor,status) => {
-				carregarProdutos();
 				$scope.produtos = [];
+				carregarProdutos();
 				delete $scope.produto;
 				console.log(valor);
 				$scope.enviarProduto.$setPristine();
@@ -43,7 +45,25 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 		});
 		//Atribui ao array contatos tudo aquilo que não estiver selecionado
 	};
+	$scope.delProdutoT = (produto)=>	{
+		produtosApi.removeProduto(produto).then((valor,status)=>{
 
+			console.log(valor.data);
+			$scope.produtos = [];
+			carregarProdutos();
+		},(valor,status)=>{
+
+			console.log("Ocorreu um error na remoção");
+
+		});
+		
+		
+		
+	};
+	$scope.updateProduto = (produto)=>{
+		$scope.produto = produto;
+	};
+	
 	let carregarProdutos = ()=>{
 	
 		produtosApi.getProdutos().then((data,status)=>{

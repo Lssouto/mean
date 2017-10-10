@@ -7,9 +7,7 @@ let _initial = ()=>{
 					{ nome: "pasta", tipo:"escritorio" ,descricao: "Tipo L", preco: 6.50, qtd: 50 }
 					];
 
-	mongodb.insertDadosDocumento("produtos",json,(callback)=>{
-		//console.log(callback);
-	});
+	mongodb.insertDadosDocumento("produtos",json,(callback)=>{});
 
 	return "Base de dados Criada!";
 
@@ -17,9 +15,7 @@ let _initial = ()=>{
 
 let _end = ()=>{
 
-	mongodb.dropDatabase((callback)=>{
-		console.log(callback);
-	});
+	mongodb.dropDatabase((callback)=>{});
 
 	return "Base de dados Deletada!";
 };

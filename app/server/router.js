@@ -42,6 +42,12 @@ router.post('/delProdutos', (req, res) => {
   	});
 });
 
+router.post('/delProduto', (req, res) => {
+  mongodb.delDadosDocumento("produtos",{ _id: ObjectId(req.body._id) },(callback)=>{
+		res.send(callback);
+	});
+});
+
 router.get('/init',(req,res)=>{
 	res.end(init.initial());
 });
