@@ -6,19 +6,15 @@ angular.module("loja-papelaria").factory("produtosApi",($http,baseUrlApi)=>{
 		return $http.post(baseUrlApi +"/api/produtos", produto)
 	};
 	let _updateProdutos = (produto) =>{
-		return $http.post(baseUrlApi +"/api/updateProduto", produto)
+		return $http.put(baseUrlApi +"/api/produtos", produto)
 	};
-	let _removeProdutos = (produto) =>{
-		return $http.post(baseUrlApi +"/api/delProdutos", produto)
-	};
-	let _removeProduto = (produto) =>{
-		return $http.post(baseUrlApi +"/api/delProduto", produto)
+	let _deleteProdutos = (produto) =>{
+		return $http.delete(baseUrlApi +"/api/produtos/" + produto._id)
 	};
 	return{
 		getProdutos: _getProdutos,
 		postProdutos: _postProdutos,
-		updateProduto : _updateProdutos,
-		removeProdutos: _removeProdutos,
-		removeProduto: _removeProduto
+		updateProdutos : _updateProdutos,
+		deleteProdutos : _deleteProdutos
 	};
 });

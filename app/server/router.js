@@ -1,10 +1,8 @@
 let router = require('express')();
 let body_parser = require('body-parser');
 
-// Mongo
-let mongodb = require('./mongodb');
-let ObjectId = require('mongodb').ObjectID;
 
+let produto = require('./produtosRouter');
 //Remover depois
 let init = require('./init');
 
@@ -23,38 +21,29 @@ router.all('*', (req, res, next) => {
 });
 
 router.get('/produtos', (req, res) => {
-  mongodb.getDadosDocumento("produtos",(callback)=>{
-  	res.send(callback);
+  produto.produtoRouter._get((callback)=>{
+    res.send(callback);
+  });
+});
+
+router.put('/produtos',(req,res)=>{
+  produto.produtoRouter._update(req.body,(callback)=>{
+    res.send(callback);
+  });
+});
+
+router.delete('/produtos/:id',(req,res)=>{
+  produto.produtoRouter._deleteOne(req.params.id,(callback)=>{
+    res.send(callback);
   });
 });
 
 router.post('/produtos', (req, res) => {
-  	mongodb.insertDadosDocumento("produtos",req.body,(callback)=>{
-  		res.send(callback);
-  	});
-});
-
-router.post('/delProdutos', (req, res) => {
-  	req.body.forEach((pos)=>{
-	  	mongodb.delDadosDocumento("produtos",{ _id: ObjectId(pos._id) },(callback)=>{
-	  		res.send(callback);
-	  	});
-  	});
-});
-
-router.post('/delProduto', (req, res) => {
-  mongodb.delDadosDocumento("produtos",{ _id: ObjectId(req.body._id) },(callback)=>{
-		res.send(callback);
-	});
-});
-
-router.post('/updateProduto',(req,res)=>{
-  let id = req.body._id
-  delete req.body['_id'];
-  mongodb.updateDadosDocumento("produtos",{ _id: ObjectId(id) },req.body,(callback)=>{
+  produto.produtoRouter._add(req.body,(callback)=>{
     res.send(callback);
   });
 });
+
 
 router.get('/init',(req,res)=>{
 	res.end(init.initial());

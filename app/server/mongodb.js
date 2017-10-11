@@ -20,9 +20,9 @@ let _dropDatabase = (callback) =>{
 
 let _criarDocumento = (collection,callback)=>{
 	_getConnection((db)=>{
-	   db.createCollection(collection, (err,res)=>{
+	   db.createCollection(collection, (err,result)=>{
 	  		if(err) throw err;
-	  		callback(res);
+	  		callback(result);
 	  		db.close();
 	   });	
 	});
@@ -40,9 +40,9 @@ let _getListaDocumento = (callback)=>{
 
 let _insertDadosDocumento = (collection,dado,callback)=>{
 	_getConnection((db)=>{
-		db.collection(collection).insert(dado, function(err, res) {
+		db.collection(collection).insert(dado, function(err, result) {
 		   if (err) throw err;
-		   callback(res);
+		   callback(result);
 		   db.close();
 		});
 	});

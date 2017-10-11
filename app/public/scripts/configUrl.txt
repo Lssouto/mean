@@ -1,0 +1,13 @@
+Escolha uma das abaixo e crie um arquivo configUrl.js
+
+Config Localhost:
+angular.module("loja-papelaria").value("config",{
+  protocol : "http://",
+  port : 3412
+}); 
+
+config c9:
+angular.module("loja-papelaria").value("config",{
+  protocol : "https://",
+  port : 8080
+}); 

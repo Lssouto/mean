@@ -8,7 +8,7 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 	$scope.adicionarProduto = (produto) =>{
 		produtosApi.postProdutos(produto).then((valor,status) => {
 			init();
-			console.log(valor);
+			
 			$scope.addProduto.$setPristine();
 		},(valor,status)=>{
 
@@ -17,7 +17,7 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 		});
 	};
 
-	$scope.delProduto = (produtos)=>	{
+/*	$scope.delProduto = (produtos)=>	{
 		let del = [];
 
 		$scope.produtos = produtos.filter((produto)=>{
@@ -30,7 +30,7 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 		});
 
 		console.log(del);
-		produtosApi.removeProdutos(del).then((valor,status)=>{
+		produtosApi.postProdutos(processData("delete",produto)).then((valor,status)=>{
 
 			console.log(valor.data);
 
@@ -40,11 +40,12 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 
 		});
 		
-	};
+	};*/
 	$scope.delProdutoT = (produto)=>	{
-		produtosApi.removeProduto(produto).then((valor,status)=>{
+		
+		produtosApi.deleteProdutos(produto).then((valor,status)=>{
 			init();
-			console.log(valor.data);
+		
 		},(valor,status)=>{
 
 			console.log("Ocorreu um error na remoção");
@@ -55,24 +56,22 @@ app.controller("loja-papelaria-ctrl",($scope,produtosApi)=>{
 
 	$scope.atualizarProduto = (produto)=>{
 		$scope.formState = true;
-		produtosApi.updateProduto(produto).then((valor,status)=>{
+		produtosApi.updateProdutos(produto).then((valor,status)=>{
 			init();
-			console.log(valor.data);
+			
 		},(valor,status)=>{
 			console.log("Ocorreu um error ao atualizar");
 		});
 	};
-
-	$scope.setFormProduto = (produto)=>{
+	$scope.setFormProduto = (produto) =>{
 		$scope.produto = produto;
 		$scope.formState = false;
 	};
-
 	//Funções
 	let carregarProdutos = ()=>{
 	
 		produtosApi.getProdutos().then((valor,status)=>{
-			console.log(valor.data);
+			
 			let Jdata = valor.data;
 
 			Jdata.forEach((pos)=>{
