@@ -47,10 +47,10 @@
 					<input class="form-control" type="text" name="descricao" placeholder="Descricao" ng-model="produto.descricao" />
 				</td>
 				<td>
-					<input class="form-control" type="text" name="preco" placeholder="Preço" ng-model="produto.preco" />
+					<input class="form-control" type="text" name="preco" placeholder="Preço" ng-model="produto.preco" ui-money/>
 				</td>
 				<td>
-					<input class="form-control" type="text" name="qtd" placeholder="Quantidade" ng-model="produto.qtd" ui-number/>
+					<input class="form-control" type="text" name="qtd" placeholder="Quantidade" ng-model="produto.qtd" ui-number />
 				</td>
 				<td>
 					<button class="btn btn-success small reset" ng-click="produto = {};formState = true;">Limpar</button>
